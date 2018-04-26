@@ -9,10 +9,13 @@ use App\Personal_Details;
 use App\Education_and_Employment_Details;
 use App\Financial_Details;
 use Illuminate\Support\Facades\Auth;
+use Validator;
+use App\Http\Controllers\Controller;
 
 
 class ApplicationsController extends Controller
 {
+//    TODO need to update code so that when back is select and values updated and resubmitted that a new database entry is not created only existing values updated
     public function step1_index() //Loan Details
     {
         if (Auth::check()) {
@@ -60,12 +63,17 @@ class ApplicationsController extends Controller
 
     public function step1_store(Request $request) //Loan Details
     {
-        $this->validate(request(),[
+        $validator = Validator::make($request->all(), [
             'loan_amount'=>'required',
             'loan_duration'=>'required',
             'loan_periodicity'=>'required',
             'loan_reason'=>'required'
         ]);
+
+        if ($validator->fails()) {
+            return redirect('/step1')
+                ->withInput();
+        }
 
         //store user entries in session until final submit
         //session()->put('Loan_Details', request()->all()); //Application::create(request(['first_name', 'last_name']));

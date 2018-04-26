@@ -71,7 +71,7 @@
 
     <div class="row">
         <div class="col-3 ml-5 panel-left">
-            <img class="img" src="img/SL_LOGO_OLIVE_RGB.png"  height="60px">
+            <img class="img" src="/images/SL_LOGO_OLIVE_RGB.png"  height="60px">
         </div>
         <div class="col-auto  d-flex ml-auto mr-5 panel-right">
             <div>
@@ -94,6 +94,7 @@
 </div>
 
 
+{{-- TODO need to add old value function for when validation redirect occurs :value="{{old('loan_amount')}}" --}}
 
 <div class="container.fluid" style="height: 60px; background-color: #ffffff;">
 </div>

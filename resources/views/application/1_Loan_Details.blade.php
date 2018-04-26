@@ -71,7 +71,7 @@
 
     <div class="row">
         <div class="col-3 ml-5 panel-left">
-            <img class="img" src="\resources\assets\img\SL_LOGO_OLIVE_RGB.png"  height="60px">
+            <img class="img" src="/images/SL_LOGO_OLIVE_RGB.png"  height="60px">
         </div>
         <div class="col-auto  d-flex ml-auto mr-5 panel-right">
             <div>
@@ -94,7 +94,7 @@
 </div>
 
 
-
+{{-- TODO need to add old value function for when validation redirect occurs :value="{{old('loan_amount')}}" --}}
 <div class="container.fluid" style="height: 60px; background-color: #ffffff;">
 </div>
 
@@ -121,7 +121,10 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" id="loan_amount" name="loan_amount">
+                                <input type="text" class="form-control" id="loan_amount" name="loan_amount" value="{{old('loan_amount')}}" required>
+                                <div class="invalid-feedback">
+                                    Required.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -132,12 +135,15 @@
                         <div class="col-lg-5">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" id="loan_duration" name="loan_duration" onchange="calculate()" placeholder="enter length of loan">
+                                <input type="text" class="form-control" id="loan_duration" name="loan_duration" onchange="calculate()" placeholder="enter length of loan" required>
                                 <div class="input-group-append">
                                     <select class="form-control btn btn-outline-secondary" id="loan_periodicity" name="loan_periodicity" onchange="calculate()" >
                                         <option value="months">Months</option>
                                         <option value="years">Years</option>
                                     </select>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Required.
                                 </div>
                             </div>
                         </div>
@@ -149,7 +155,7 @@
                     <div class="form-group row">
                         <label for="loan_reason" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Reason for loan</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="loan_reason" name="loan_reason">
+                            <select class="form-control" id="loan_reason" name="loan_reason" required>
                                 <option value="" >Please Select</option>
                                 <optgroup label="Living, Utilities & Bills">
                                     <option value="Food">Food</option>
@@ -168,6 +174,9 @@
                                     <option value="Item 3">Item 3</option>
                                 </optgroup>
                             </select>
+                            <div class="invalid-feedback">
+                                Required.
+                            </div>
                         </div>
                     </div>
 
@@ -246,7 +255,6 @@
         </div>
         </div>
     </div>
-</div>
 
 
 <div class="container.fluid spacer-bottom">
@@ -296,8 +304,8 @@
 
 
         // find out what the repayment frequency is as requested by user
-        loanDuration = document.getElementById("loanDuration");
-        duration_period = document.getElementById("duration_period");
+        loanDuration = document.getElementById("loan_duration");
+        duration_period = document.getElementById("loan_periodicity");
 
         switch (duration_period.value) {
             case "months":
@@ -338,7 +346,7 @@
             // Excellent Rate
 
             // Look up the input and output elements in the document
-            var amount = document.getElementById("loanAmount");
+            var amount = document.getElementById("loan_amount");
             var apr = 9;
             //var durationMths = document.getElementById("loanDuration");
             var total = document.getElementById("total");
@@ -387,7 +395,7 @@
         // Excellent Rate
 
         // Look up the input and output elements in the document
-        var amount = document.getElementById("loanAmount");
+        var amount = document.getElementById("loan_amount");
         var apr = 12;
         //var durationMths = document.getElementById("loanDuration");
         var total = document.getElementById("total");
@@ -436,7 +444,7 @@
         // Excellent Rate
 
         // Look up the input and output elements in the document
-        var amount = document.getElementById("loanAmount");
+        var amount = document.getElementById("loan_amount");
         var apr = 16;
         //var durationMths = document.getElementById("loanDuration");
         var total = document.getElementById("total");
