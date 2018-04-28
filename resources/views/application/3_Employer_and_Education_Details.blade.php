@@ -117,7 +117,7 @@
                     <div class="form-group row">
                         <label for="employer" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Employer</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="employer" name="employer" required>
+                            <select class="form-control" id="employer" name="employer" value="{{old('employer')}}" required>
                                 <option value="">--Select--</option>
                                 <option value="ABC Pty Ltd">ABC Pty Ltd</option>
                                 <option value="123 Pty Ltd">123 Pty Ltd</option>
@@ -133,7 +133,7 @@
                     <div class="form-group row">
                         <label for="employment_status" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Employment status</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="employment_status" name="employment_status" required>
+                            <select class="form-control" id="employment_status" name="employment_status" value="{{old('employment_status')}}" required>
                                 <option value="">--Select--</option>
                                 <option value="Full-time">Full-time</option>
                                 <option value="Part-time">Part-time</option>
@@ -149,7 +149,7 @@
                     <div class="form-group row">
                         <label for="job_title" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Job title</label>
                         <div class="col-lg-5">
-                            <input class="form-control" type="text" id="job_title" name="job_title" required>
+                            <input class="form-control" type="text" id="job_title" name="job_title" value="{{old('job_title')}}" required>
                             <div class="invalid-feedback">
                                 Required.
                             </div>
@@ -160,7 +160,7 @@
                     <div class="form-group row">
                         <label for="employment_duration" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Time with employer</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="employment_duration" name="employment_duration" required>
+                            <select class="form-control" id="employment_duration" name="employment_duration" value="{{old('employment_duration')}}" required>
                                 <option value="">--Select--</option>
                                 <option value="0 months to 6 months">0 months to 6 months</option>
                                 <option value="6 months to 1 year">6 months to 1 year</option>
@@ -183,7 +183,7 @@
                     <div class="form-group row">
                         <label for="education_completed" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Highest level of education completed</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="education_completed" name="education_completed" required>
+                            <select class="form-control" id="education_completed" name="education_completed" value="{{old('education_completed')}}" required>
                                 <option value="">--Select--</option>
                                 <option value="Higher School Certificate">Higher School Certificate</option>
                                 <option value="Certification IV or equivalent">Certification IV or equivalent</option>

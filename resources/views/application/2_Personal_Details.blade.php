@@ -117,7 +117,7 @@
                     <div class="form-group row">
                         <label for="title" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Title</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="title" name="title" required>
+                            <select class="form-control" id="title" name="title" value="{{old('title')}}" required>
                                 <option value="" >Please Select</option>
                                 <option value="Mr">Mr</option>
                                 <option value="Ms">Ms</option>
@@ -131,7 +131,7 @@
                     <div class="form-group row">
                         <label for="first_name" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">First name</label>
                         <div class="col-lg-5">
-                            <input id="firstName" name="first_name" class="form-control" type="text" required>
+                            <input id="firstName" name="first_name" value="{{old('first_name')}}" class="form-control" type="text" required>
                             <div class="invalid-feedback">
                                 Required.
                             </div>
@@ -142,7 +142,7 @@
                     <div class="form-group row">
                         <label for="last_name" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Last name</label>
                         <div class="col-lg-5">
-                            <input class="form-control" type="text" id="last_name" name="last_name" required>
+                            <input class="form-control" type="text" id="last_name" name="last_name" value="{{old('last_name')}}" required>
                             <div class="invalid-feedback">
                                 Please provide your last name.
                             </div>
@@ -151,7 +151,7 @@
                     <div class="form-group row">
                         <label for="DOB" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Date of birth</label>
                         <div class="col-lg-5">
-                            <input class="form-control" type="text" id="DOB" name="DOB" placeholder="DD/MM/YYYY" required>
+                            <input class="form-control" type="text" id="DOB" name="DOB" value="{{old('DOB')}}" placeholder="DD/MM/YYYY" >
                         </div>
                         <div class="invalid-feedback">
                             Please provide your date of birth.
@@ -161,7 +161,7 @@
                     <div class="form-group row">
                         <label for="drivers_licence_number" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Drivers Licence Number</label>
                         <div class="col-lg-5">
-                            <input class="form-control" type="text" id="drivers_licence_number" name="drivers_licence_number" required>
+                            <input class="form-control" type="text" id="drivers_licence_number" name="drivers_licence_number" value="{{old('drivers_licence_number')}}" required>
                             <div class="invalid-feedback">
                                 Please provide your drivers license number.
                             </div>
@@ -171,7 +171,7 @@
                     <div class="form-group row">
                         <label for="mobile_number" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Mobile number</label>
                         <div class="col-lg-5">
-                            <input class="form-control" type="text" id="mobile_number" name="mobile_number" required>
+                            <input class="form-control" type="text" id="mobile_number" name="mobile_number" value="{{old('mobile_number')}}" required>
                             <div class="invalid-feedback">
                                 Please provide your mobile number.
                             </div>
@@ -186,7 +186,7 @@
                         <label for="current_address" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Address</label>
                         <div class="col-lg-5">
                             <!--<div id="locationField">-->
-                                <input class="form-control places-autocomplete" id="autocomplete" name="current_address" placeholder="Enter your address"  onFocus="geolocate()" type="text" required>
+                                <input class="form-control places-autocomplete" id="autocomplete" name="current_address" value="{{old('current_address')}}" placeholder="Enter your address"  onFocus="geolocate()" type="text" required>
                             <!--</div>-->
                         </div>
                     </div>
@@ -194,7 +194,7 @@
                     <div class="form-group row">
                         <label for="time_at_address" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Time at current address</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="time_at_address" name="time_at_address" onchange="previousAddress()" required>
+                            <select class="form-control" id="time_at_address" name="time_at_address" value="{{old('time_at_address')}}" onchange="previousAddress()" required>
                                 <option value="" >Please Select</option>
                                 <option value="6">0 to 6 months</option>
                                 <option value="12">6 to 12 months</option>
@@ -220,7 +220,7 @@
                     <div class="form-group row">
                         <label for="residential_status" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Residential status</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="residential_status" name="residential_status"  required>
+                            <select class="form-control" id="residential_status" name="residential_status" value="{{old('residential_status')}}" required>
                                 <option value="" >Please Select</option>
                                 <option value="Own (with mortgage)">Own (with mortgage)</option>
                                 <option value="Own (outright)">Own (outright)</option>
@@ -232,7 +232,7 @@
                     <div class="form-group row">
                         <label for="citizen_status" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Citizenship status</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="citizen_status" name="citizen_status" required>
+                            <select class="form-control" id="citizen_status" name="citizen_status" value="{{old('citizen_status')}}" required>
                                 <option value="" >Please Select</option>
                                 <option value="[x1]">[x1]</option>
                                 <option value="[x2]">[x2]</option>
@@ -244,7 +244,7 @@
                     <div class="form-group row">
                         <label for="martial_status" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Martial Status</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="martial_status" name="martial_status" required>
+                            <select class="form-control" id="martial_status" name="martial_status" value="{{old('martial_status')}}" required>
                                 <option value="" >Please Select</option>
                                 <option value="Single">Single</option>
                                 <option value="Married">Married</option>

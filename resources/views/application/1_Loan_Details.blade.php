@@ -135,9 +135,9 @@
                         <div class="col-lg-5">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" id="loan_duration" name="loan_duration" onchange="calculate()" placeholder="enter length of loan" required>
+                                <input type="text" class="form-control" id="loan_duration" name="loan_duration" value="{{old('loan_duration')}}" onchange="calculate()" placeholder="enter length of loan" required>
                                 <div class="input-group-append">
-                                    <select class="form-control btn btn-outline-secondary" id="loan_periodicity" name="loan_periodicity" onchange="calculate()" >
+                                    <select class="form-control btn btn-outline-secondary" id="loan_periodicity" name="loan_periodicity" value="{{old('loan_periodicity')}}" onchange="calculate()" >
                                         <option value="months">Months</option>
                                         <option value="years">Years</option>
                                     </select>
@@ -155,7 +155,7 @@
                     <div class="form-group row">
                         <label for="loan_reason" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Reason for loan</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="loan_reason" name="loan_reason" required>
+                            <select class="form-control" id="loan_reason" name="loan_reason" value="{{old('loan_reason')}}" required>
                                 <option value="" >Please Select</option>
                                 <optgroup label="Living, Utilities & Bills">
                                     <option value="Food">Food</option>

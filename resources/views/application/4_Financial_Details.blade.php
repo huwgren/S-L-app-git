@@ -132,7 +132,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">$</span>
                                     </div>
-                                    <input type="text" class="form-control" id="salary" name="salary" required>
+                                    <input type="text" class="form-control" id="salary" name="salary" value="{{old('salary')}}" required>
                                     <div class="input-group-append">
                                         <select class="form-control btn btn-outline-secondary" id="salary_periodicity" name="salary_periodicity" >
                                             <option value="weekly">Weekly</option>
@@ -189,7 +189,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" id="other_assets_value" name="other_assets_value" required>
+                                <input type="text" class="form-control" id="other_assets_value" name="other_assets_value" value="{{old('other_assets_value')}}" required>
                             </div>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" id="savings_value" name="savings_value" required>
+                                <input type="text" class="form-control" id="savings_value" name="savings_value" value="{{old('savings_value')}}" required>
                             </div>
                         </div>
                     </div>
@@ -221,7 +221,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" id="rent_expense" name="rent_expense" required>
+                                <input type="text" class="form-control" id="rent_expense" name="rent_expense" value="{{old('rent_expense')}}" required>
                                 <div class="input-group-append">
                                     <select class="form-control btn btn-outline-secondary" id="rent_expense_periodicity" name="rent_expense_periodicity">
                                         <option value="weekly">Weekly</option>
@@ -240,7 +240,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" id="other_expenses" name="other_expenses" required>
+                                <input type="text" class="form-control" id="other_expenses" name="other_expenses" value="{{old('other_expenses')}}" required>
                                 <div class="input-group-append">
                                     <select class="form-control btn btn-outline-secondary" id="expenses_periodicity" name="expenses_periodicity" >
                                         <option value="weekly">Weekly</option>
@@ -255,7 +255,7 @@
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px; padding-top: 0px">How many dependents do you have? <i>(excluding spouse)</i></label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="number_dependents" name="number_dependents" required>
+                            <select class="form-control" id="number_dependents" name="number_dependents" value="{{old('number_dependents')}}" required>
                                 <option value="">Please select</option>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
