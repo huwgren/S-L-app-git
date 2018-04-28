@@ -394,7 +394,7 @@
                     </div>
 
                     <div class="form-group row justify-content-center">
-                        <a class="btn btn-outline-info" href="3_Employer_and_Education_Details.blade.php" role="button">Previous Page</a>
+                        <a class="btn btn-outline-info" href="/step3" role="button">Previous Page</a>
                         <!--  <input type="button" class="btn btn-outline-info" value="Previous page">  -->
                     </div>
 

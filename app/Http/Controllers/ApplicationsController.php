@@ -63,40 +63,55 @@ class ApplicationsController extends Controller
 
     public function step1_store(Request $request) //Loan Details
     {
-        $validator = Validator::make($request->all(), [
+        $validatedData1=$this->validate(request(),[
             'loan_amount'=>'required',
             'loan_duration'=>'required',
             'loan_periodicity'=>'required',
-            'loan_reason'=>'required'
+            'loan_reason'=>'required',
         ]);
-
-        if ($validator->fails()) {
-            return redirect('/step1')
-                ->withInput();
-        }
 
         //store user entries in session until final submit
         //session()->put('Loan_Details', request()->all()); //Application::create(request(['first_name', 'last_name']));
-        //dd(session()->get('user1'));
+
+        $request->session()->forget('loan_details');
+        $request->session()->forget('personal_details');
+        $request->session()->forget('education_employment_details');
 
         //
         session(['step1'=>'true']);
 
-        // Save Loan Data
-        $loan = new Loan_Details;
-        $loan->loan_amount = $request->input('loan_amount');
-        $loan->loan_duration = $request->input('loan_duration');
-        $loan->loan_periodicity = $request->input('loan_periodicity');
-        $loan->loan_reason = $request->input('loan_reason');
-        $loan->user_id = auth()->user()->id;
-        $loan->save();
+        $id = Auth::id();
+        $validatedData1 =array_merge($validatedData1,array('user_id'=>$id));
+
+//        if(empty($request->session()->get('loan_details'))){
+            $loan = new Loan_Details();
+            $loan->fill($validatedData1);
+            $request->session()->put('loan_details', $loan);
+//        }else{
+//            $loan = $request->session()->get('loan_details');
+//            $loan->fill($validatedData1);
+//            $request->session()->put('loan_details', $loan);
+//        }
+
+        //dd($loan);
+        //$loan->save();
+
+//
+//        // Save Loan Data
+//        $loan = new Loan_Details;
+//        $loan->loan_amount = $request->input('loan_amount');
+//        $loan->loan_duration = $request->input('loan_duration');
+//        $loan->loan_periodicity = $request->input('loan_periodicity');
+//        $loan->loan_reason = $request->input('loan_reason');
+//        $loan->user_id = auth()->user()->id;
+//        $loan->save();
 
         return redirect('/step2');
     }
 
     public function step2_store(Request $request) //Personal Details
     {
-        $this->validate(request(),[
+        $validatedData2=$this->validate(request(),[
             'title'=>'required',
             'first_name'=>'required',
             'last_name'=>'required',
@@ -112,20 +127,36 @@ class ApplicationsController extends Controller
 
         session(['step2'=>'true']);
 
-        $personal = new Personal_Details;
-        $personal->title = $request->input('title');
-        $personal->first_name = $request->input('first_name');
-        $personal->last_name = $request->input('last_name');
-        $personal->DOB = $request->input('DOB');
-        $personal->drivers_licence_number = $request->input('drivers_licence_number');
-        $personal->mobile_number = $request->input('mobile_number');
-        $personal->current_address = $request->input('current_address');
-        $personal->time_at_address = $request->input('time_at_address');
-        $personal->residential_status = $request->input('residential_status');
-        $personal->citizen_status = $request->input('citizen_status');
-        $personal->martial_status = $request->input('martial_status');
-        $personal->user_id = auth()->user()->id;
-        $personal->save();
+
+        $id = Auth::id();
+        $validatedData2=array_merge($validatedData2,array('user_id'=>$id));
+
+//        if(empty($request->session()->get('personal_details'))){
+            $personal = new Personal_Details();
+            $personal->fill($validatedData2);
+            $request->session()->put('personal_details', $personal);
+//        }else{
+//            $personal = $request->session()->get('personal_details');
+//            $personal->fill($validatedData2);
+//            $request->session()->put('personal_details', $personal);
+//        }
+
+
+
+//        $personal = new Personal_Details;
+//        $personal->title = $request->input('title');
+//        $personal->first_name = $request->input('first_name');
+//        $personal->last_name = $request->input('last_name');
+//        $personal->DOB = $request->input('DOB');
+//        $personal->drivers_licence_number = $request->input('drivers_licence_number');
+//        $personal->mobile_number = $request->input('mobile_number');
+//        $personal->current_address = $request->input('current_address');
+//        $personal->time_at_address = $request->input('time_at_address');
+//        $personal->residential_status = $request->input('residential_status');
+//        $personal->citizen_status = $request->input('citizen_status');
+//        $personal->martial_status = $request->input('martial_status');
+//        $personal->user_id = auth()->user()->id;
+//        $personal->save();
 
         //move to next application page
         return redirect('/step3');
@@ -133,7 +164,7 @@ class ApplicationsController extends Controller
 
     public function step3_store(Request $request) //Education and Employer Details
     {
-        $this->validate(request(),[
+        $validatedData3=$this->validate(request(),[
             'employer'=>'required',
             'employment_status'=>'required',
             'job_title'=>'required',
@@ -146,16 +177,32 @@ class ApplicationsController extends Controller
         session(['step3'=>'true']);
 
 
-        //store new inputs
-        $education_employer_data = new Education_and_Employment_Details;
-        $education_employer_data->employer = $request->input('employer');
-        $education_employer_data->employment_status = $request->input('employment_status');
-        $education_employer_data->job_title = $request->input('job_title');
-        $education_employer_data->employment_duration = $request->input('employment_duration');
-        $education_employer_data->education_completed = $request->input('education_completed');
-        $education_employer_data->current_study_level = $request->input('current_study_level',''); //if request does contain current study return empty string
-        $education_employer_data->user_id = auth()->user()->id;
-        $education_employer_data->save();
+        $id = Auth::id();
+        $current_study_level = $request->input('current_study_level','');
+        $validatedData3 =array_merge($validatedData3,array('current_study_level'=>$current_study_level),array('user_id'=>$id));
+
+//        if(empty($request->session()->get('education_employment_details'))){
+            $education_employer = new Education_and_Employment_Details();
+            $education_employer->fill($validatedData3);
+            $request->session()->put('education_employment_details', $education_employer);
+//        }else{
+//            $education_employer = $request->session()->get('education_employment_details');
+//            $education_employer->fill($validatedData3);
+//            $request->session()->put('education_employment_details', $education_employer);
+//        }
+
+
+
+//        //store new inputs
+//        $education_employer_data = new Education_and_Employment_Details;
+//        $education_employer_data->employer = $request->input('employer');
+//        $education_employer_data->employment_status = $request->input('employment_status');
+//        $education_employer_data->job_title = $request->input('job_title');
+//        $education_employer_data->employment_duration = $request->input('employment_duration');
+//        $education_employer_data->education_completed = $request->input('education_completed');
+//        $education_employer_data->current_study_level = $request->input('current_study_level',''); //if request does contain current study return empty string
+//        $education_employer_data->user_id = auth()->user()->id;
+//        $education_employer_data->save();
 
         return redirect('/step4');
     }
@@ -204,6 +251,16 @@ class ApplicationsController extends Controller
         $financial_data->loan_personal_owing = $request->input('loan_personal_owing',0);
         $financial_data->user_id = auth()->user()->id;
         $financial_data->save();
+
+        $loan=$request->session()->get('loan_details');
+        $loan->save();
+
+        $personal=$request->session()->get('personal_details');
+        $personal->save();
+
+        $education_employer=$request->session()->get('education_employment_details');
+        //dd($education_employer);
+        $education_employer->save();
 
         return "completed!!";
     }
