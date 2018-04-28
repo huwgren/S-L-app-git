@@ -94,7 +94,7 @@
 </div>
 
 
-{{-- TODO need to add old value function for when validation redirect occurs :value="{{old('loan_amount')}}" --}}
+{{-- TODO add functionality to capture wether toggle switches were selected and add old value function to it --}}
 
 <div class="container.fluid" style="height: 60px; background-color: #ffffff;">
 </div>
@@ -117,12 +117,12 @@
                     <div class="form-group row">
                         <label for="employer" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Employer</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="employer" name="employer" value="{{old('employer')}}" required>
+                            <select class="form-control" id="employer" name="employer" required>
                                 <option value="">--Select--</option>
-                                <option value="ABC Pty Ltd">ABC Pty Ltd</option>
-                                <option value="123 Pty Ltd">123 Pty Ltd</option>
-                                <option value="A Company">A Company</option>
-                                <option value="B Company">B Company</option>
+                                <option value="ABC Pty Ltd" {{{(isset($education_employment_details->employer) && $education_employment_details->employer == 'ABC Pty Ltd') ? "selected=\"selected\"" : ""}}}>ABC Pty Ltd</option>
+                                <option value="123 Pty Ltd" {{{(isset($education_employment_details->employer) && $education_employment_details->employer == '123 Pty Ltd') ? "selected=\"selected\"" : ""}}}>123 Pty Ltd</option>
+                                <option value="A Company" {{{(isset($education_employment_details->employer) && $education_employment_details->employer == 'A Company') ? "selected=\"selected\"" : ""}}}>A Company</option>
+                                <option value="B Company" {{{(isset($education_employment_details->employer) && $education_employment_details->employer == 'B Company') ? "selected=\"selected\"" : ""}}}>B Company</option>
                             </select>
                             <div class="invalid-feedback">
                                 Required.
@@ -133,12 +133,12 @@
                     <div class="form-group row">
                         <label for="employment_status" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Employment status</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="employment_status" name="employment_status" value="{{old('employment_status')}}" required>
+                            <select class="form-control" id="employment_status" name="employment_status" required>
                                 <option value="">--Select--</option>
-                                <option value="Full-time">Full-time</option>
-                                <option value="Part-time">Part-time</option>
-                                <option value="Contractor">Contractor</option>
-                                <option value="Casual">Casual</option>
+                                <option value="Full-time" {{{(isset($education_employment_details->employment_status) && $education_employment_details->employment_status == 'Full-time') ? "selected=\"selected\"" : ""}}}>Full-time</option>
+                                <option value="Part-time" {{{(isset($education_employment_details->employment_status) && $education_employment_details->employment_status == 'Part-time') ? "selected=\"selected\"" : ""}}}>Part-time</option>
+                                <option value="Contractor" {{{(isset($education_employment_details->employment_status) && $education_employment_details->employment_status == 'Contractor') ? "selected=\"selected\"" : ""}}}>Contractor</option>
+                                <option value="Casual" {{{(isset($education_employment_details->employment_status) && $education_employment_details->employment_status == 'Casual') ? "selected=\"selected\"" : ""}}}>Casual</option>
                             </select>
                             <div class="invalid-feedback">
                                 Required.
@@ -149,7 +149,7 @@
                     <div class="form-group row">
                         <label for="job_title" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Job title</label>
                         <div class="col-lg-5">
-                            <input class="form-control" type="text" id="job_title" name="job_title" value="{{old('job_title')}}" required>
+                            <input class="form-control" type="text" id="job_title" name="job_title" value="{{{ $education_employment_details->job_title or '' }}}" required>
                             <div class="invalid-feedback">
                                 Required.
                             </div>
@@ -160,13 +160,13 @@
                     <div class="form-group row">
                         <label for="employment_duration" class="col-lg-4 col-form-label form-control-label  text-right" style="padding-left: 0px;padding-right: 0px">Time with employer</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="employment_duration" name="employment_duration" value="{{old('employment_duration')}}" required>
+                            <select class="form-control" id="employment_duration" name="employment_duration" required>
                                 <option value="">--Select--</option>
-                                <option value="0 months to 6 months">0 months to 6 months</option>
-                                <option value="6 months to 1 year">6 months to 1 year</option>
-                                <option value="1 year to 3 years">1 year to 3 years</option>
-                                <option value="3 years to 5 years">3 years to 5 years</option>
-                                <option value="Greater than 5 years">Greater than 5 years</option>
+                                <option value="0 months to 6 months" {{{(isset($education_employment_details->employment_duration) && $education_employment_details->employment_duration == '0 months to 6 months') ? "selected=\"selected\"" : ""}}}>0 months to 6 months</option>
+                                <option value="6 months to 1 year" {{{(isset($education_employment_details->employment_duration) && $education_employment_details->employment_duration == '6 months to 1 year') ? "selected=\"selected\"" : ""}}}>6 months to 1 year</option>
+                                <option value="1 year to 3 years" {{{(isset($education_employment_details->employment_duration) && $education_employment_details->employment_duration == '1 year to 3 years') ? "selected=\"selected\"" : ""}}}>1 year to 3 years</option>
+                                <option value="3 years to 5 years" {{{(isset($education_employment_details->employment_duration) && $education_employment_details->employment_duration == '3 years to 5 years') ? "selected=\"selected\"" : ""}}}>3 years to 5 years</option>
+                                <option value="Greater than 5 years" {{{(isset($education_employment_details->employment_duration) && $education_employment_details->employment_duration == 'Greater than 5 years') ? "selected=\"selected\"" : ""}}}>Greater than 5 years</option>
                             </select>
                             <div class="invalid-feedback">
                                 Required.
@@ -183,12 +183,12 @@
                     <div class="form-group row">
                         <label for="education_completed" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Highest level of education completed</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="education_completed" name="education_completed" value="{{old('education_completed')}}" required>
+                            <select class="form-control" id="education_completed" name="education_completed" required>
                                 <option value="">--Select--</option>
-                                <option value="Higher School Certificate">Higher School Certificate</option>
-                                <option value="Certification IV or equivalent">Certification IV or equivalent</option>
-                                <option value="Undergraduate Degree">Undergraduate Degree</option>
-                                <option value="Postgraduate Degree">Postgraduate Degree</option>
+                                <option value="Higher School Certificate" {{{(isset($education_employment_details->education_completed) && $education_employment_details->education_completed == 'Higher School Certificate') ? "selected=\"selected\"" : ""}}}>Higher School Certificate</option>
+                                <option value="Certification IV or equivalent" {{{(isset($education_employment_details->education_completed) && $education_employment_details->education_completed == 'Certification IV or equivalent') ? "selected=\"selected\"" : ""}}}>Certification IV or equivalent</option>
+                                <option value="Undergraduate Degree" {{{(isset($education_employment_details->education_completed) && $education_employment_details->education_completed == 'Undergraduate Degree') ? "selected=\"selected\"" : ""}}}>Undergraduate Degree</option>
+                                <option value="Postgraduate Degree" {{{(isset($education_employment_details->education_completed) && $education_employment_details->education_completed == 'Postgraduate Degree') ? "selected=\"selected\"" : ""}}}>Postgraduate Degree</option>
                             </select>
                             <div class="invalid-feedback">
                                 Required.
