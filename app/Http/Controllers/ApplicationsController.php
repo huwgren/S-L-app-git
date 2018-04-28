@@ -16,41 +16,44 @@ use App\Http\Controllers\Controller;
 class ApplicationsController extends Controller
 {
 //    TODO need to update code so that when back is select and values updated and resubmitted that a new database entry is not created only existing values updated
-    public function step1_index() //Loan Details
+    public function step1_index(Request $request) //Loan Details
     {
         if (Auth::check()) {
-            return view('application.1_Loan_Details');
+            $loan_details = $request->session()->get('loan_details');
+            return view('application.1_Loan_Details',compact('loan_details',$loan_details));
         } else {
             return view('/register');
         }
 
     }
 
-    public function step2_index() //Personal Details
+    public function step2_index(Request $request) //Personal Details
     {
         $step1_check = session('step1');
         //dd($step1_check);
         //dd(session()->all());
 
         if ($step1_check=='true'){
-            return view('application.2_Personal_Details');
+            $personal_details = $request->session()->get('personal_details');
+            return view('application.2_Personal_Details',compact('personal_details',$personal_details));
         } else {
             return redirect()->action('ApplicationsController@step1_index');
         }
     }
 
-    public function step3_index() //Education and Employer Details
+    public function step3_index(Request $request) //Education and Employer Details
     {
         $step2_check = session('step2');
 
         if ($step2_check=='true'){
-            return view('application.3_Employer_and_Education_Details');
+            $education_employment_details = $request->session()->get('education_employment_details');
+            return view('application.3_Employer_and_Education_Details',compact('education_employment_details',$education_employment_details));
         } else {
             return redirect()->action('ApplicationsController@step1_index');
         }
     }
 
-    public function step4_index() //Financial Details
+    public function step4_index(Request $request) //Financial Details
     {
         $step3_check = session('step3');
 
@@ -76,6 +79,7 @@ class ApplicationsController extends Controller
         $request->session()->forget('loan_details');
         $request->session()->forget('personal_details');
         $request->session()->forget('education_employment_details');
+        $request->session()->forget('financial_details');
 
         //
         session(['step1'=>'true']);
@@ -251,6 +255,8 @@ class ApplicationsController extends Controller
         $financial_data->loan_personal_owing = $request->input('loan_personal_owing',0);
         $financial_data->user_id = auth()->user()->id;
         $financial_data->save();
+
+
 
         $loan=$request->session()->get('loan_details');
         $loan->save();

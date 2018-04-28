@@ -94,7 +94,6 @@
 </div>
 
 
-{{-- TODO need to add old value function for when validation redirect occurs :value="{{old('loan_amount')}}" --}}
 <div class="container.fluid" style="height: 60px; background-color: #ffffff;">
 </div>
 
@@ -121,7 +120,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" id="loan_amount" name="loan_amount" value="{{old('loan_amount')}}" required>
+                                <input type="text" class="form-control" id="loan_amount" name="loan_amount" value="{{{ $loan_details->loan_amount or '' }}}" required>
                                 <div class="invalid-feedback">
                                     Required.
                                 </div>
@@ -135,11 +134,11 @@
                         <div class="col-lg-5">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" id="loan_duration" name="loan_duration" value="{{old('loan_duration')}}" onchange="calculate()" placeholder="enter length of loan" required>
+                                <input type="text" class="form-control" id="loan_duration" name="loan_duration" value="{{{ $loan_details->loan_duration or '' }}}" onchange="calculate()" placeholder="enter length of loan" required>
                                 <div class="input-group-append">
-                                    <select class="form-control btn btn-outline-secondary" id="loan_periodicity" name="loan_periodicity" value="{{old('loan_periodicity')}}" onchange="calculate()" >
-                                        <option value="months">Months</option>
-                                        <option value="years">Years</option>
+                                    <select class="form-control btn btn-outline-secondary" id="loan_periodicity" name="loan_periodicity" onchange="calculate()" >
+                                        <option value="months" {{{(isset($loan_details->loan_periodicity) && $loan_details->loan_periodicity == 'months') ? "selected=\"selected\"" : ""}}}>Months</option>
+                                        <option value="years" {{{(isset($loan_details->loan_periodicity) && $loan_details->loan_periodicity == 'years') ? "selected=\"selected\"" : ""}}}>Years</option>
                                     </select>
                                 </div>
                                 <div class="invalid-feedback">
@@ -155,12 +154,12 @@
                     <div class="form-group row">
                         <label for="loan_reason" class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px">Reason for loan</label>
                         <div class="col-lg-5">
-                            <select class="form-control" id="loan_reason" name="loan_reason" value="{{old('loan_reason')}}" required>
+                            <select class="form-control" id="loan_reason" name="loan_reason" required>
                                 <option value="" >Please Select</option>
                                 <optgroup label="Living, Utilities & Bills">
-                                    <option value="Food">Food</option>
-                                    <option value="Transport or petrol">Transport or petrol</option>
-                                    <option value="Household bills">Household bills</option>
+                                    <option value="Food" {{{(isset($loan_details->loan_reason) && $loan_details->loan_reason == 'Food') ? "selected=\"selected\"" : ""}}}>Food</option>
+                                    <option value="Transport or petrol" {{{(isset($loan_details->loan_reason) && $loan_details->loan_reason == 'Transport or petrol') ? "selected=\"selected\"" : ""}}}>Transport or petrol</option>
+                                    <option value="Household bills" {{{(isset($loan_details->loan_reason) && $loan_details->loan_reason == 'Household bills') ? "selected=\"selected\"" : ""}}}>Household bills</option>
                                 </optgroup>
                                 <optgroup label="Home">
                                     <option value="Rent or rental bond">Rent or rental bond</option>
