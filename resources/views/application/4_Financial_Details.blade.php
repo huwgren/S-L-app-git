@@ -221,9 +221,9 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="text" class="form-control" id="rent" name="rent" required>
+                                <input type="text" class="form-control" id="rent_expense" name="rent_expense" required>
                                 <div class="input-group-append">
-                                    <select class="form-control btn btn-outline-secondary" id="rent_periodicity" name="rent_periodicity">
+                                    <select class="form-control btn btn-outline-secondary" id="rent_expense_periodicity" name="rent_expense_periodicity">
                                         <option value="weekly">Weekly</option>
                                         <option value="fortnightly">Fortnightly</option>
                                         <option value="monthly">Monthly</option>
@@ -256,13 +256,13 @@
                         <label class="col-lg-4 col-form-label form-control-label text-right" style="padding-left: 0px;padding-right: 0px; padding-top: 0px">How many dependents do you have? <i>(excluding spouse)</i></label>
                         <div class="col-lg-5">
                             <select class="form-control" id="number_dependents" name="number_dependents" required>
-                                <option>Please select</option>
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option value="">Please select</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 or more</option>
                             </select>
                         </div>
                     </div>
@@ -346,42 +346,42 @@
                         <strong>Acknowledgments</strong>
                     </div>
 
-                    <div class="form-group row agreement">
-                        <label class="col-lg-6 control-label offset-1">Considering your future circumstances and financial position, are you going to be able to repay the loan?</label>
-                        <div class="col-lg-3">
-                            <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
-                                <label class="btn btn-outline-success">
-                                    <input type="radio" name="options" id="option1" />Yes</label>
-                                <label class="btn btn-outline-danger">
-                                    <input type="radio" name="options" id="option2" />No</label>
-                            </div>
-                            <div class="invalid-feedback">
-                                Required.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row info-true">
-                        <label class="col-lg-6 control-label offset-1">I agree that the information I have given is true and correct</label>
-                        <div class="col-lg-3">
-                                <div class="form-check">
-                                    <input class="form-check-input position-static" type="checkbox" id="Information_acknowledge" name="Information_acknowledge" required >
-                                </div>
-                        </div>
-                        <div class="invalid-feedback">
-                            Required.
-                        </div>
-                    </div>
-
-                    <div class="form-group row info-true">
-                        <label class="col-lg-6 control-label offset-1">I have reviewed, understand and consent to the <a href="">Privacy Consents and Electronic Authorisation</a> </label>
-                        <div class="col-lg-3">
-                                <div class="form-check">
-                                    <input class="form-check-input position-static" type="checkbox" id="Consent_acknowledge" name="Consent_acknowledge" required>
+                        <div class="form-group row info-true">
+                            <label class="col-lg-6 control-label offset-1">I have considered my future circumstances and financial position and are able to repay the loan </label>
+                            <div class="col-lg-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="financial_position_acknowledge" name="financial_position_acknowledge" required>
+                                    <label class="custom-control-label" for="financial_position_acknowledge"></label>
                                 </div>
                                 <div class="invalid-feedback">
                                     Required.
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row info-true">
+                            <label class="col-lg-6 control-label offset-1">I agree that the information I have given is true and correct </label>
+                            <div class="col-lg-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="information_acknowledge" name="information_acknowledge" required>
+                                    <label class="custom-control-label" for="information_acknowledge"></label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Required.
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="form-group row info-true">
+                        <label class="col-lg-6 control-label offset-1">I have reviewed, understand and consent to the <a href="">Privacy Consents and Electronic Authorisation</a> </label>
+                        <div class="col-lg-3">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="consent_acknowledge" name="consent_acknowledge" required>
+                                <label class="custom-control-label" for="consent_acknowledge"></label>
+                            </div>
+                            <div class="invalid-feedback">
+                                Required.
+                            </div>
                         </div>
                     </div>
 

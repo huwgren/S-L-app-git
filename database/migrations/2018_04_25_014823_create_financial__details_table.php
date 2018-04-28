@@ -18,39 +18,39 @@ class CreateFinancialDetailsTable extends Migration
             $table->integer('user_id');
 
             //Income
-            $table->integer('salary');
+            $table->bigInteger('salary');
             $table->string('salary_periodicity');
-            $table->integer('rental_income')->nullable();
+            $table->bigInteger('rental_income')->nullable();
             $table->string('rental_periodicity')->nullable();
-            $table->integer('other_income')->nullable();
+            $table->bigInteger('other_income')->nullable();
             $table->string('other_income_periodicity')->nullable();
 
             //Assets
-            $table->integer('properties_value')->nullable();
-            $table->integer('other_assets_value')->nullable();
-            $table->integer('savings_value')->nullable();
+            $table->bigInteger('properties_value')->nullable();
+            $table->bigInteger('other_assets_value')->nullable();
+            $table->bigInteger('savings_value')->nullable();
 
             //Expenses
-            $table->integer('rent_expense')->nullable();
+            $table->bigInteger('rent_expense')->nullable();
             $table->string('rent_expense_periodicity')->nullable();
 
-            $table->integer('other_expenses');
+            $table->bigInteger('other_expenses');
             $table->string('expenses_periodicity');
 
             $table->string('number_dependents');
 
             //Liabilities
                 //home loan
-            $table->integer('loan_home')->nullable();
+            $table->bigInteger('loan_home')->nullable();
             $table->string('loan_home_periodicity')->nullable();
-            $table->integer('loan_home_owing')->nullable();
+            $table->bigInteger('loan_home_owing')->nullable();
                 //credit cards
-            $table->integer('loan_creditcard_owing')->nullable();
-            $table->integer('loan_creditcard_limit')->nullable();
+            $table->bigInteger('loan_creditcard_owing')->nullable();
+            $table->bigInteger('loan_creditcard_limit')->nullable();
                 //personal loan
-            $table->integer('loan_personal')->nullable();
+            $table->bigInteger('loan_personal')->nullable();
             $table->string('loan_personal_periodicity')->nullable();
-            $table->integer('loan_personal_owing')->nullable();
+            $table->bigInteger('loan_personal_owing')->nullable();
 
             //Acknowledgements
                 //todo
