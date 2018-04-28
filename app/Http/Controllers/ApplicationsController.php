@@ -110,9 +110,6 @@ class ApplicationsController extends Controller
             'martial_status'=>'required'
         ]);
 
-        //session()->put('Personal_Details', request()->all());
-        //dd(session()->all());
-
         session(['step2'=>'true']);
 
         $personal = new Personal_Details;
@@ -130,6 +127,7 @@ class ApplicationsController extends Controller
         $personal->user_id = auth()->user()->id;
         $personal->save();
 
+        //move to next application page
         return redirect('/step3');
     }
 
