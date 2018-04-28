@@ -259,7 +259,7 @@
                     </div>
 
                     <div class="form-group row justify-content-center">
-                        <a class="btn btn-outline-info" href="1_Loan_Details.blade.php" role="button">Previous Page</a>
+                        <a class="btn btn-outline-info" href="/step1" role="button">Previous Page</a>
                     </div>
 
                 </form>
