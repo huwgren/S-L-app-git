@@ -268,6 +268,6 @@ class ApplicationsController extends Controller
         //dd($education_employer);
         $education_employer->save();
 
-        return "completed!!";
+        return "Application Completed!! Would now login them into the dashboard and show progress of their loan application";
     }
 }

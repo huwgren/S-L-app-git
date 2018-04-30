@@ -104,7 +104,7 @@
             <div class="col-md-8">
                 <div class="card">
 
-                    <div class="card-header" style="border-style: none; background-color: #659267; color: white">{{ __('Register to get started') }} </div>
+                    <div class="card-header" style="border-style: none; background-color: #659267; color: white"><h5 class="mb-0">Register to get started</h5></div>
 
                     <div class="card-body" style="background-color:#efebe4">
                         <form method="POST" action="{{ route('register') }}">
@@ -167,8 +167,6 @@
 
 <div class="container.fluid spacer-bottom">
 </div>
-
-
 
 
 
