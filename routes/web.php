@@ -15,8 +15,14 @@ Route::get('/', function () {
     return view('auth.register');
 });
 
-Route::get('/master', 'MasterDashboardController@index');
-Route::get('/masterLoan', 'LoanDetailsController@index');
+
+Route::get('/master', function (){
+    $user_details=DB::table('users')->get();
+    $loan_details=DB::table('loan__details')->get();
+    $personal_details=DB::table('personal__details')->get();
+    $financial_details=DB::table('financial__details')->get();
+    return view('masterDashboard',compact('user_details','loan_details','personal_details','financial_details'));
+});
 
 Auth::routes();
 
