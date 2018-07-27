@@ -8,3 +8,4 @@ class Loan_Details extends Model
 {
     protected $guarded=[];
 }
+

@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('auth.register');
 });
 
+Route::get('/master', 'MasterDashboardController@index');
+Route::get('/masterLoan', 'LoanDetailsController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
