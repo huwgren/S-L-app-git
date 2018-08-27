@@ -21,7 +21,7 @@ class CreatePersonalDetailsTable extends Migration
             $table->string('last_name');
             $table->string('DOB'); //!!should store as a date function
             $table->integer('drivers_licence_number');
-            $table->integer('mobile_number');
+            $table->bigInteger('mobile_number');
             $table->string('current_address');
             $table->string('time_at_address');
             $table->string('residential_status');
